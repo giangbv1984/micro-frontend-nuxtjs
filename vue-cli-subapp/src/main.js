@@ -36,14 +36,14 @@ function handleStore(props) {
   store.$sdk = sdk;
 
   store.commit("update", {
-    token: sdk.token
+    name: sdk.name
   });
 
   if (sdk) {
-    sdk.globalState.onGlobalStateChange(({ token }) => {
-      console.log("global state", token);
+    sdk.globalState.onGlobalStateChange(({ name }) => {
+      console.log("global state", name);
       store.commit("update", {
-        token
+        name
       });
     });
   }

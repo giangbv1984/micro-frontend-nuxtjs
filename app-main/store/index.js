@@ -8,21 +8,21 @@ const TYPES = {
 
 export const state = () => ({
   apps: [],
-  token: 'Welcome Tellscore ',
+  name: 'Welcome Tellscore ',
   sdk: null
 })
 
 export const mutations = {
   [TYPES.INIT_APPS](state, apps) {
     const actions = initGlobalState({
-      token: state.token,
+      name: state.name,
     })
     const sdk = {
       globalState: actions,
       go2404: () => {
         this.$router.push('404')
       },
-      token: state.token
+      name: state.name
     }
     apps = apps.map((item) => ({
       ...item,
