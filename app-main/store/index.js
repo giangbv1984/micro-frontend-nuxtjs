@@ -8,7 +8,7 @@ const TYPES = {
 
 export const state = () => ({
   apps: [],
-  token: null,
+  token: 'aaaaa',
   sdk: null
 })
 
@@ -67,6 +67,11 @@ async function getMenus() {
         name: 'Campaign',
         activeRule: '/campaign',
         entry: 'http://127.0.0.1:7102/',
+      },
+      {
+        name: 'User',
+        activeRule: '/user',
+        entry: 'http://127.0.0.1:7103/',
       },
     ],
     message: 'success',

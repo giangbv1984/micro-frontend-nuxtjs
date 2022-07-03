@@ -1,4 +1,4 @@
-const BASE = window.__POWERED_BY_QIANKUN__ ? '/campaign' : ''
+const BASE = window.__POWERED_BY_QIANKUN__ ? '/user' : ''
 
 function dynamicImport(path) {
   return import(`~/pages/${path}/index.vue`).then(m => m.default || m)
