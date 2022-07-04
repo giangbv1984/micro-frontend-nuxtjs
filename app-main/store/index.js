@@ -8,21 +8,21 @@ const TYPES = {
 
 export const state = () => ({
   apps: [],
-  name: 'Welcome Tellscore ',
+  user: {name: 'Admin'},
   sdk: null
 })
 
 export const mutations = {
   [TYPES.INIT_APPS](state, apps) {
     const actions = initGlobalState({
-      name: state.name,
+      user: state.user,
     })
     const sdk = {
       globalState: actions,
       go2404: () => {
         this.$router.push('404')
       },
-      name: state.name
+      user: state.user
     }
     apps = apps.map((item) => ({
       ...item,
@@ -64,16 +64,19 @@ async function getMenus() {
     code: 0,
     payload: [
       {
+        icon: require('../assets/images/menu-user-mail.svg'),
         name: 'Campaign',
         activeRule: '/campaign',
         entry: 'http://127.0.0.1:7102/',
       },
       {
+        icon: require('../assets/images/menu-user-account.svg'),
         name: 'User',
         activeRule: '/user',
         entry: 'http://127.0.0.1:7103/',
       },
       {
+        icon: require('../assets/images/menu-user-announce.svg'),
         name: 'Job',
         activeRule: '/job',
         entry: 'http://127.0.0.1:7101/',

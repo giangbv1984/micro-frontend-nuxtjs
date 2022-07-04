@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Campaign page</h2>
+    <h2>Create Invite-Only Campaign</h2>
     <button @click="go2about">about</button>
   </div>
 </template>

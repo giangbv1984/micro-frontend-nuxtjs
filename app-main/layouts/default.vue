@@ -1,23 +1,27 @@
 <template>
   <el-container>
-    <el-aside width="200px">
+    <el-aside>
+      <div class="logo">
+        <nuxt-link to="/">
+          <img src='~/assets/images/logo.svg' alt="Logo"/>
+        </nuxt-link>
+      </div>
       <div class="menu-wrap">
-        <ul>
-          <li v-for="app in apps" :key="app.name">
-            <nuxt-link :to="app.activeRule">{{app.name}}</nuxt-link>
-          </li>
-        </ul>
+        <el-row type="flex" align="middle" justify="center">
+          <el-col :span="6" v-for="app in apps" :key="app.name" type="flex">
+            <nuxt-link :to="app.activeRule" :class="checkActiveMenu(app.activeRule)">
+              <img class="rounded-full" :src='app.icon' alt=''/>
+              <span>{{ app.name }}</span>
+            </nuxt-link>
+          </el-col>
+        </el-row>
       </div>
     </el-aside>
     <el-container>
-      <el-header>Tellscore</el-header>
       <el-main>
         <div>
           <div>
-            <div class="state-wrap">
-              <input type="text" v-model="value" />
-              <button @click="handleChange">change global value</button>
-            </div>
+            <h2>Welcome to Tellscore</h2>
             <div id="sub-app"></div>
           </div>
         </div>
@@ -26,7 +30,6 @@
     </el-container>
   </el-container>
 </template>
-
 
 <script>
 import { mapState } from 'vuex'
@@ -37,11 +40,11 @@ import {
 export default {
   data() {
     return {
-      value: '',
+      value:''
     }
   },
   mounted() {
-    this.init()
+    this.init();
   },
   computed: {
     ...mapState(['apps', 'sdk']),
@@ -57,12 +60,29 @@ export default {
         name: this.value,
       })
     },
+    checkActiveMenu(name) {
+      return name === this.$route.path ? 'active' : '';
+    }
   },
 }
 </script>
 
-
 <style >
+.el-row{
+  margin: 0;
+}
+.logo {
+  display: flex;
+  height: 90px;
+  align-items: center;
+  justify-content: center;
+}
+.el-aside {
+  background: #3f45ff;
+}
+.el-container{
+  height: 100vh;
+}
 .el-header, .el-footer {
   background-color: #B3C0D1;
   color: #333;
@@ -70,12 +90,16 @@ export default {
   line-height: 60px;
 }
 
-.state-wrap,
-.menu-wrap {
-  text-align: center;
+.menu-wrap a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  color: white;
+  text-decoration: none;
+  opacity: 0.54;
 }
-
-.menu-wrap > ul {
-  list-style: none;
+.menu-wrap a:hover, .menu-wrap a.active {
+  opacity: 0.87;
 }
 </style>

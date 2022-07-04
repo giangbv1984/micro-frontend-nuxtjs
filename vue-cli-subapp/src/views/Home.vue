@@ -1,11 +1,9 @@
 <template>
   <div class="home">
-    <div>vue-app</div>
-    <div>global state: {{ name }}</div>
-    <button>update global state to parent</button>
+    <div><h2>Job</h2></div>
+    <div>User: {{ user.name }}</div>
     <button @click="$router.push({ name: 'About' })">About</button>
     <br />
-    <img src="../assets/logo.png" alt />
   </div>
 </template>
 
@@ -14,7 +12,7 @@ import { mapMutations, mapState } from "vuex";
 export default {
   name: "Home",
   computed: {
-    ...mapState(["name"])
+    ...mapState(["user"])
   },
   methods: {
     ...mapMutations(["updateParentState"])

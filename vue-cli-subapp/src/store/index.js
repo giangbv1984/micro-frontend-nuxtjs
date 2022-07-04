@@ -13,13 +13,9 @@ export default new Vuex.Store({
         state[key] = data[key];
       });
     },
-    /**
-     * @param {state} _
-     * @param {object} data
-     */
     updateParentState(_, data) {
       if (this.$sdk) {
-        this.$sdk.setGlobalState(data);
+        this.$sdk.globalState.setGlobalState(data);
       }
     }
   },
